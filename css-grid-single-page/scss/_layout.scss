@@ -1,0 +1,248 @@
+$unit: 25px;
+$blue1: hsl(211, 29%, 19%);
+$blue2: hsl(210, 29%, 25%);
+$blue3: hsl(208, 46%, 8%);
+$blue4: hsl(212, 25%, 16%);
+$white: hsl(240, 19%, 98%);
+$red1: hsl(0, 100%, 65%);
+$darkGrey: hsl(0, 0%, 5%);
+$lightGrey: hsl(0, 0%, 76%);
+$boxShadowFar: 0px 0px $unit -15px hsla(0, 0%, 0%, 0.75);
+$boxShadowNear: 0px 0px 12px 0px hsla(0, 0%, 0%, 0.75);
+$boxShadowNearInset: inset 0px 0px 12px 0px hsla(0, 0%, 0%, 0.75);
+$boxShadowFarInset: inset 0px 0px 65px 0px hsla(0, 0%, 0%, 0.75);
+$bodyBackground: -webkit-linear-gradient(bottom, hsla(0, 0%, 0%, 0.75) 0%, hsla(0, 0%, 0%, 0) 100%);
+$bodyBackgroundBlack: -webkit-linear-gradient(bottom, black 0%, black 100%);
+
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+html {}
+
+* a {
+	text-decoration: none;
+}
+
+body {
+	height: 100vh;
+	overflow: hidden;
+	color: $white;
+	background-color: $blue3;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+	font-family: 'Open Sans', sans-serif;
+
+	#page {
+		display: grid;
+		grid-template-columns: 1fr 3fr;
+		grid-template-rows: calc(100vh - 3rem) 3rem;
+		grid-gap: 0px 0px;
+		height: 100vh;
+		width: 100vw;
+		/* -webkit-transition: 1s ease;
+		transition: 1s ease; */
+	}
+
+	header#masthead {
+		grid-column: 1 / 2;
+		padding: $unit;
+		padding-right: 0px;
+		text-align: right;
+		transform: translateX(0px);
+		opacity: 1;
+		transition: transform 1s ease;
+		transition: opacity 1s ease;
+
+
+		div.site-branding {
+			a.custom-logo-link {
+				width: 5rem;
+				height: 5rem;
+
+				img.custom-logo {}
+			}
+			.site-title {
+				font-size: 2.5rem;
+				margin: 0px;
+				display: inline;
+
+				a {
+					color: $white;
+					text-decoration: none;
+				}
+			}
+			p.site-description {
+				font-size: 1.2rem;
+				margin: 0px;
+				margin-bottom: $unit;
+			}
+		}
+
+		nav#site-navigation {
+			width: 100%;
+
+			div {
+
+				ul#primary-menu {
+
+					li.menu-item {
+						width: 100%;
+
+
+
+						a {
+							text-align: right;
+							font-size: 1.4rem;
+							color: $white;
+							text-decoration: none;
+							opacity: 0.7;
+							display: inline;
+							-webkit-transition: opacity 0.4s ease-in-out;
+							transition: opacity 0.4s ease-in-out;
+
+							i {
+								width: 1.4rem;
+								text-align: center;
+								margin-left: $unit;
+							}
+						}
+						a:hover {
+							opacity: 1;
+							-webkit-transition: opacity 0.4s ease-in-out;
+							transition: opacity 0.4s ease-in-out;
+						}
+
+						ul.sub-menu {
+
+
+							li a {
+								opacity: 0.7;
+							}
+
+							li.current-menu-item a {
+								opacity: 1;
+							}
+						}
+
+						&:hover ul.sub-menu {
+							transition: 0.6s ease;
+						}
+					}
+
+					li.current-menu-item,
+						{
+
+						a {
+							opacity: 1;
+							-webkit-transition: opacity 0.4s ease-in-out;
+							transition: opacity 0.4s ease-in-out;
+
+						}
+
+
+
+					}
+
+				}
+
+			}
+		}
+	}
+
+	#content.site-content {
+		grid-column: 2 / 3;
+		justify-self: stretch;
+		max-width: 100%;
+		overflow-x: hidden;
+		height: 100vh;
+		overflow-y: scroll;
+
+
+		#primary.content-area {
+			color: black;
+			background-color: $white;
+			border-radius: 3px;
+			-webkit-box-shadow: $boxShadowFar;
+			box-shadow: $boxShadowFar;
+			margin: $unit;
+			padding: $unit;
+			min-height: calc(100vh - 100px);
+			position: relative;
+			-webkit-transform: scale(0.8);
+			transform: scale(0.8);
+			-webkit-transform-origin: top center;
+			transform-origin: top center;
+			opacity: 0;
+			-webkit-animation: FadeOutUp;
+			animation: FadeOutUp;
+			-webkit-animation-duration: 0.4s;
+			animation-duration: 0.4s;
+			-webkit-animation-fill-mode: forwards;
+			animation-fill-mode: forwards;
+			-webkit-animation-timing-function: ease-out;
+			animation-timing-function: ease-out;
+
+			h1 {
+				margin-top: 0px;
+			}
+
+
+		}
+	}
+
+	#content.site-content.visible {
+
+		#primary.content-area {
+			-webkit-transform-origin: top center;
+			transform-origin: top center;
+			-webkit-transform: scale(1);
+			transform: scale(1);
+			opacity: 1;
+			-webkit-animation: FadeInUp;
+			animation: FadeInUp;
+			-webkit-animation-duration: 0.4s;
+			animation-duration: 0.4s;
+			-webkit-animation-fill-mode: forwards;
+			animation-fill-mode: forwards;
+			-webkit-animation-timing-function: ease-out;
+			animation-timing-function: ease-out;
+		}
+	}
+
+	footer#colophon {
+		grid-column: 1 / 2;
+		grid-row: 2 / 3;
+		-ms-flex-item-align: end;
+		align-self: end;
+		padding: $unit;
+		padding-right: 0px;
+		font-size: 0.7rem;
+		text-align: right;
+		opacity: 0.7;
+
+		a {
+			color: $white;
+		}
+	}
+
+	a.post-edit-link {
+		position: absolute;
+		top: 12.5px;
+		right: 12.5px;
+		color: $white;
+		background-color: $darkGrey;
+		padding: 5px 10px 5px 10px;
+		border-radius: $unit;
+		text-decoration: none;
+		opacity: 0.7;
+		-webkit-transition: opacity 0.4s ease;
+		transition: opacity 0.4s ease;
+
+		&:hover {
+			text-decoration: underline;
+			opacity: 1;
+			-webkit-transition: opacity 0.4s ease;
+			transition: opacity 0.4s ease;
+		}
+	}
+}
